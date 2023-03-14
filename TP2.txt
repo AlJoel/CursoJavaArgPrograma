@@ -58,3 +58,5 @@ public static String descifrar(String textoCifrado, int desplazamiento) {
     return cifrar(textoCifrado, ABECEDARIO.length() - desplazamiento);
 }
 }
+
+//Modificacion realizada desde GitHub
