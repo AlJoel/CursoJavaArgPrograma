@@ -1,5 +1,5 @@
 package TrabajoIntegrador;
-import TrabajoIntegrador.Equipo.*;
+import TrabajoIntegrador.Equipo;
 public class Partido {
     private Equipo equipo1;
     private Equipo equipo2;
@@ -46,12 +46,18 @@ public class Partido {
     }
 
     public ResultadoEnum resultado(Equipo equipo){
+        String ganador = "";
         if(getGolesEquipo1() > getGolesEquipo2()) {
+            ganador = getEquipo1().getNombre();
+        } else if(getGolesEquipo1() < getGolesEquipo2()) {
+            ganador = getEquipo2().getNombre();
+        }
+        if (ganador == equipo.getNombre()) {
             return ResultadoEnum.GANADOR;
-        } else if(getGolesEquipo1() < getGolesEquipo2()){
-            return ResultadoEnum.PERDEDOR;
-        } else {
+        } else if (ganador == "") {
             return ResultadoEnum.EMPATE;
+        } else {
+            return ResultadoEnum.PERDEDOR;
         }
     }
 }
