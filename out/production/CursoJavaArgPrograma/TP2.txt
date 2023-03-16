@@ -1,4 +1,0 @@
-//Modificacion realizada desde GitHub
-//Modificacion realizada desde IntelliJ IDEA
-
-Los errores de pusheo se solucionaron eliminando los cambios no deseados del origin/master
