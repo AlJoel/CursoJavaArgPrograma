@@ -24,8 +24,7 @@ public class ExerciseFour {
 
     public static int sumNumbersInFile(String filePath) {
         int sum = 0;
-        String file = filePath;
-        for (String line : Files.readAllLines(Paths.get(file))) {
+        for (String line : Files.readAllLines(Paths.get(filePath))) {
             int num = Integer.parseInt(line.trim());
             sum += num;
         }
@@ -34,8 +33,7 @@ public class ExerciseFour {
 
     public static int multiplyNumbersInFile(String filePath) {
         int mul = 1;
-        String file = filePath;
-        for (String line : Files.readAllLines(Paths.get(file))) {
+        for (String line : Files.readAllLines(Paths.get(filePath))) {
             int num = Integer.parseInt(line.trim());
             mul += num;
         }
