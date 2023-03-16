@@ -1,4 +1,4 @@
-//Modificacion realizada desde GitHub
-//Modificacion realizada desde IntelliJ IDEA
-
-Los errores de pusheo se solucionaron eliminando los cambios no deseados del origin/master
+Ejercicios clase 2:
+3. No esta porque falta pushear los cambios.
+5. Porque falta hacer el pull.
+8. Lo que sucedio es que hay un conflicto entre ambas instancias. Para resolverlo compare los cambios y conserve solo los que me interesaban.
