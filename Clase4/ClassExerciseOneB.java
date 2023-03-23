@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static Clase3.ClassExerciseOne.orderNumbers;
 
-public class ClassExerciseTwo {
+public class ClassExerciseOneB {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

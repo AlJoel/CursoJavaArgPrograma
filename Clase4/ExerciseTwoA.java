@@ -1,9 +1,10 @@
 package Clase4;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ExerciseFour {
+public class ExerciseTwoA {
     public static void main(String[] args) {
 
         String filePath = args[0];
@@ -24,18 +25,26 @@ public class ExerciseFour {
 
     public static int sumNumbersInFile(String filePath) {
         int sum = 0;
-        for (String line : Files.readAllLines(Paths.get(filePath))) {
-            int num = Integer.parseInt(line.trim());
-            sum += num;
+        try {
+            for (String line : Files.readAllLines(Paths.get(filePath))) {
+                int num = Integer.parseInt(line.trim());
+                sum += num;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return sum;
     }
 
     public static int multiplyNumbersInFile(String filePath) {
         int mul = 1;
-        for (String line : Files.readAllLines(Paths.get(filePath))) {
-            int num = Integer.parseInt(line.trim());
-            mul += num;
+        try {
+            for (String line : Files.readAllLines(Paths.get(filePath))) {
+                int num = Integer.parseInt(line.trim());
+                mul *= num;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         return mul;
     }

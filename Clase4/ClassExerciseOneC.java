@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static Clase3.ClassExerciseOne.*;
 
-public class ClassExerciseThree {
+public class ClassExerciseOneC {
     public static void main(String[] args) {
         int num1, num2, num3;
         String order;
