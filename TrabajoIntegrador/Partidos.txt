@@ -1,0 +1,5 @@
+Mexico,Argentina,2-1
+Brasil,Francia,0-2
+Alemania,Italia,1-1
+España,Inglaterra,3-2
+Holanda,Portugal,1-3
