@@ -283,3 +283,9 @@ nbdist/
 *.xhtml
 
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,eclipse,intellij+iml,intellij+all,netbeans,web
+/Clase1/
+/Equipo/
+/Clase3/
+/Clase4/
+/Clase2/
+/apache-maven-3.9.1/

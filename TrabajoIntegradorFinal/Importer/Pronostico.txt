@@ -1,2 +1,6 @@
-Mexico,GANADOR
-Brasil,GANADOR
+Joel,Argentina,GANADOR
+Joel,Polonia,PERDEDOR
+Joel,Argentina,GANADOR
+Manuel,Arabia Saudita,EMPATE
+Manuel,Mexico,GANADOR
+Manuel,Brasil,GANADOR

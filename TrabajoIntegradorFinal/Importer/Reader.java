@@ -4,6 +4,7 @@ import TrabajoIntegradorFinal.Entities.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Reader {
     public static void main(String[] args) {
@@ -17,17 +18,19 @@ public class Reader {
             String partido;
             String[] datos;
             String[] goles;
-            Partido[] partidos = new Partido[2];
+            Partido[] partidos = new Partido[6];
             int i = 0;
+            String numeroRonda = null;
             while ((partido = reader.readLine()) != null) {
                 datos = partido.split(",");
-                String nombreEquipo1 = datos[0];
-                String nombreEquipo2 = datos[1];
+                numeroRonda = datos[0];
+                String nombreEquipo1 = datos[1];
+                String nombreEquipo2 = datos[2];
 
                 Equipo equipo1 = new Equipo(nombreEquipo1);
                 Equipo equipo2 = new Equipo(nombreEquipo2);
 
-                goles = datos[2].split("-");
+                goles = datos[3].split("-");
                 int golesEquipo1 = Integer.parseInt(goles[0]);
                 int golesEquipo2 = Integer.parseInt(goles[1]);
 
@@ -35,10 +38,8 @@ public class Reader {
                 i++;
             }
 
-            //System.out.println(partidos[0].resultado(partidos[0].getEquipo1()));
-            String numeroRonda = Integer.toString(1);
             ronda = new Ronda(numeroRonda, partidos);
-
+            System.out.println(numeroRonda);
             reader.close(); // cierra el reader
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
@@ -57,16 +58,15 @@ public class Reader {
             BufferedReader reader = new BufferedReader(new FileReader(rutaPronosticos));
             String partido;
             String[] datos;
-            pronosticos = new Pronostico[2];
+            pronosticos = new Pronostico[6];
             int i = 0;
             while ((partido = reader.readLine()) != null) {
                 datos = partido.split(",");
-                String nombreEquipo = datos[0];
-                String resultado = datos[1];
+                String nombreParticipante = datos[0];
+                String nombreEquipo = datos[1];
+                String resultado = datos[2];
                 Equipo equipo1Partido = ronda.getPartidos()[i].getEquipo1();
                 Equipo equipo2Partido = ronda.getPartidos()[i].getEquipo2();
-                String nombreEquipo1 = equipo1Partido.getNombre();
-                Equipo equipo;
 
                 ResultadoEnum resultadoEquipo;
                 if (resultado.equals("PERDEDOR")) {
@@ -78,9 +78,9 @@ public class Reader {
                 }
 
                 if (nombreEquipo == equipo1Partido.getNombre()){
-                    pronosticos[i] = new Pronostico(ronda.getPartidos()[i], equipo1Partido, resultadoEquipo);
+                    pronosticos[i] = new Pronostico(ronda.getPartidos()[i], equipo1Partido, resultadoEquipo, nombreParticipante);
                 } else {
-                    pronosticos[i] = new Pronostico(ronda.getPartidos()[i], equipo2Partido, resultadoEquipo);
+                    pronosticos[i] = new Pronostico(ronda.getPartidos()[i], equipo2Partido, resultadoEquipo, nombreParticipante);
 
                 }
                 i++;
@@ -93,11 +93,18 @@ public class Reader {
 
         int sumaPuntos = 0;
         System.out.println("----- PREDICCIONES -----");
-
+        HashMap<String, Integer> puntos = new HashMap<String, Integer>();
         for (Pronostico pro : pronosticos) {
-            sumaPuntos += pro.puntos();
+            puntos.putIfAbsent(pro.getParticipante(), 0);
+            sumaPuntos += pro.puntos() + puntos.get(pro.getParticipante());
+            puntos.put(pro.getParticipante(), sumaPuntos);
             System.out.println(pro.getResultado() + ": " + pro.getEquipo().getNombre());
+            sumaPuntos = 0;
         }
-        System.out.println("\nPuntaje: " + String.valueOf(sumaPuntos));
+
+        for (String key : puntos.keySet()){
+            System.out.println("\nPuntaje de " + key + ": " + puntos.get(key));
+
+        }
     }
 }

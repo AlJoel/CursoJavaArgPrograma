@@ -4,12 +4,14 @@ public class Pronostico {
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
+    private String participante;
 
     // Constructor
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado,String participante) {
         this.partido = partido;
         this.equipo = equipo;
         this.resultado = resultado;
+        this.participante = participante;
     }
 
     // Métodos getter y setter
@@ -21,6 +23,9 @@ public class Pronostico {
         this.partido = partido;
     }
 
+    public String getParticipante(){
+        return participante;
+    }
     public Equipo getEquipo() {
         return equipo;
     }
